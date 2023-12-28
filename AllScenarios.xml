@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+
+    <test name="Login with valid data">
+        <classes>
+            <class name="testcase.TC01_Login">
+                <methods>
+                    <include name="loginWithRegisteredUser_P"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="SearchForSystemUser">
+        <classes>
+            <class name="testcase.TC02_SearchForSystemUsers">
+                <methods>
+                    <include name="searchAtSystemUsers"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="AddSystemUser">
+        <classes>
+            <class name="testcase.TC03_AddSystemUser">
+                <methods>
+                    <include name="addNewSystemUser"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="SearchForEmployee">
+        <classes>
+            <class name="testcase.TC04_SearchForEmployee">
+                <methods>
+                    <include name="searchForEmployee"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="AddNewEmployee">
+        <classes>
+            <class name="testcase.TC05_AddEmployee">
+                <methods>
+                    <include name="addEmployee"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+
+</suite>
