@@ -10,6 +10,8 @@ import util.Utility;
 
 import java.io.IOException;
 
+import static pages.PageBase.waitForPageLoad;
+
 public class TC03_AddSystemUser extends TestBase {
     String userName = Utility.getSingleJsonData(System.getProperty("user.dir") + "/src/test/resources/data_driven/loginData.json", "userName");
     String password = Utility.getExcelData(0, 0, "loginData");
@@ -25,29 +27,21 @@ public class TC03_AddSystemUser extends TestBase {
 
     @Test(priority = 1)
     public void addNewSystemUser() throws InterruptedException {
-        Thread.sleep(2000);
         new P01_LoginPage(driver).fillUsername(userName).fillPassword(password).clickLoginButton();
-        Thread.sleep(3000);
-
         new P02_AdminPage(driver).clickOnAdminTab();
-        Thread.sleep(1000);
-
         new P03_AddSystemUserPage(driver).addSystemUser();
-        Thread.sleep(1000);
         new P03_AddSystemUserPage(driver).selectUserRole(userRole).addEmployeeName(employeeName).
-                selectStatus(userStatus).addUserName(userNameForAdd).fillPassword(passwordForAdd).fillConfirmPassword(passwordForAdd).
+                selectStatus(userStatus).fillUserName(userNameForAdd).fillPassword(passwordForAdd).fillConfirmPassword(passwordForAdd).
                 clickOnSaveBtn();
-        Thread.sleep(10000);
 
         Utility.captureScreenshot(driver,"AddNewUser");
 
         // search that user added successfully
+        new P02_AdminPage(driver).waitUntilPageLoad();
         new P02_AdminPage(driver).fillUserNameInputField(userNameForAdd).selectUserRole().
                 fillEmployeeNameInputField(employeeName).selectUserStatus().clickOnSearchBtn();
-        Thread.sleep(1500);
 
         //Assert that new user added successfully
         Assert.assertTrue(new P02_AdminPage(driver).validateIfSearchSuccess());
-
     }
 }

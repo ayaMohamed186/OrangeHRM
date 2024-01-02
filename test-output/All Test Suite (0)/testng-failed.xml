@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [All Test Suite (0)]" guice-stage="DEVELOPMENT">
+  <parameter name="browser" value=""/>
+  <listeners>
+    <listener class-name="listener.MyListener"/>
+  </listeners>
+  <test thread-count="5" name="AddNewEmployee(failed)">
+    <classes>
+      <class name="testcase.TC05_AddEmployee">
+        <methods>
+          <include name="addEmployee"/>
+          <include name="getResult"/>
+          <include name="defineSuite"/>
+          <include name="endSuite"/>
+          <include name="tearDown"/>
+          <include name="setupDriver"/>
+        </methods>
+      </class> <!-- testcase.TC05_AddEmployee -->
+    </classes>
+  </test> <!-- AddNewEmployee(failed) -->
+</suite> <!-- Failed suite [All Test Suite (0)] -->

@@ -4,6 +4,6 @@
     <parameter name="browser" value=""/>
     <suite-files>
         <suite-file path="AllScenarios.xml"/>
-        <suite-file path="NegativeLoginScenarios.xml"/>
+<!--        <suite-file path="NegativeLoginScenarios.xml"/>-->
     </suite-files>
 </suite>

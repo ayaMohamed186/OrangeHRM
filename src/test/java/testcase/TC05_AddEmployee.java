@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import pages.P01_LoginPage;
 import pages.P04_PimPage;
 import pages.P05_AddEmployeePage;
+import pages.P07_EmployeeListForPimPage;
 import util.Utility;
 
 import java.io.IOException;
@@ -22,19 +23,13 @@ public class TC05_AddEmployee extends TestBase {
 
     @Test(priority = 1)
     public void addEmployee() throws InterruptedException {
-        Thread.sleep(2000);
         new P01_LoginPage(driver).fillUsername(userName).fillPassword(password).clickLoginButton();
-        Thread.sleep(2000);
-
         new P04_PimPage(driver).clickOnPimTab();
-        Thread.sleep(1000);
-
         new P05_AddEmployeePage(driver).clickOnAddBtn();
-        Thread.sleep(1000);
-
         new P05_AddEmployeePage(driver).fillFirstName(firstNameInputField).fillMiddleName(middleNameInputField).
                 fillLastName(lastNameInputField).clickOnSaveBtn();
-        Thread.sleep(7000);
+        //Thread.sleep(7000);
+        new P07_EmployeeListForPimPage(driver).waitUntilPageLoad();
 
         //capture screenSHot
         Utility.captureScreenshot(driver,"AddNewEmployee");
@@ -42,5 +37,6 @@ public class TC05_AddEmployee extends TestBase {
         //assertion
         String actualNameAdded = firstNameInputField + " " + lastNameInputField; //which already added by user
         Assert.assertTrue(new P05_AddEmployeePage(driver).validateEmployeeAdded(actualNameAdded)); //compare it with actual display in employee list
+        System.out.println(" firstName+lastName = " + actualNameAdded);
     }
 }

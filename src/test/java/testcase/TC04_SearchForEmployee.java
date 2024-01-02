@@ -26,23 +26,21 @@ public class TC04_SearchForEmployee extends TestBase{
 
     @Test(priority = 1)
     public void searchForEmployee() throws InterruptedException {
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
         new P01_LoginPage(driver).fillUsername(userName).fillPassword(password).clickLoginButton();
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
 
         new P04_PimPage(driver).clickOnPimTab();
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
         new P04_PimPage(driver).fillEmployeeName(employeeName).fillEmployeeID(randomEmployeeNumber).selectEmploymentStatus().
                 fillSupervisorName(supervisorName).clickOnSearchBtn();
-        Thread.sleep(5000);
+        //Thread.sleep(5000);
 
-        //screenSHot
+        new P02_AdminPage(driver).waitUntilSearchDone();
         captureScreenshot(driver,"SearchForEmployee");
 
         //Assert search work
         Assert.assertTrue(new P02_AdminPage(driver).validateIfSearchSuccess());
-
-
     }
 
 }

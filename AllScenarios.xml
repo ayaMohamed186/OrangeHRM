@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
+    <listeners>
+        <listener class-name="listener.MyListener"/>
+    </listeners>
 
     <test name="Login with valid data">
         <classes>
@@ -11,7 +14,7 @@
             </class>
         </classes>
     </test>
-    <test name="SearchForSystemUser">
+   <test name="SearchForSystemUser">
         <classes>
             <class name="testcase.TC02_SearchForSystemUsers">
                 <methods>
@@ -47,6 +50,4 @@
             </class>
         </classes>
     </test>
-
-
 </suite>
